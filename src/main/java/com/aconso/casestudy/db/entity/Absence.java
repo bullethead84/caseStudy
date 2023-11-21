@@ -1,24 +1,27 @@
 package com.aconso.casestudy.db.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.util.Date;
 import java.util.UUID;
-import jakarta.validation.constraints.NotNull;
+
 @Entity
 public class Absence {
 
   @Id
   private UUID id;
 
-  @NotNull
+  @Column(nullable = false)
   private Date from;
+  @Column(nullable = false)
   private Date to;
-  @NotNull
+  @Column(nullable = false)
   private String reason;
   @ManyToOne
-  @NotNull
+  @JoinColumn(nullable = false)
   private Employee employee;
 
   public UUID getId() {
@@ -60,7 +63,6 @@ public class Absence {
   public void setEmployee(Employee employee) {
     this.employee = employee;
   }
-
 
 
 }

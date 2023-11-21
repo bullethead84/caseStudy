@@ -5,7 +5,6 @@ import com.aconso.casestudy.db.entity.Absence;
 import com.aconso.casestudy.service.RepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 @Component
 public class AbsenceDtoMapper {
