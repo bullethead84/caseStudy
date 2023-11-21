@@ -10,16 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EmployeeController {
 
   private RepositoryService repositoryService;
+private AbsenceDtoMapper mapper;
 
   @Autowired
-  EmployeeController(RepositoryService repositoryService) {
+  EmployeeController(RepositoryService repositoryService, AbsenceDtoMapper mapper) {
     this.repositoryService = repositoryService;
+    this.mapper = mapper;
   }
 
   @GetMapping("/absence")
@@ -29,12 +32,8 @@ public class EmployeeController {
 
 
   @PostMapping("/employees/{id}")
-  public void addAbstance(@PathVariable String id, Absence absence) {
-    if (Objects.isNull(absence.getId())) {
-      absence.setId(UUID.randomUUID());
-    }
-    absence.setEmployee(repositoryService.findUserById(id));
-    repositoryService.addAbsence(absence);
+  public void addAbstance(@PathVariable String id, @RequestBody AbsenceDto absence) {
+    repositoryService.addAbsence(mapper.toAbsence(absence, id));
   }
 
   @GetMapping("/employees")

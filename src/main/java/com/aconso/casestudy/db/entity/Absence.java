@@ -5,16 +5,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import java.util.Date;
 import java.util.UUID;
-
+import jakarta.validation.constraints.NotNull;
 @Entity
 public class Absence {
 
   @Id
   private UUID id;
+
+  @NotNull
   private Date from;
   private Date to;
+  @NotNull
   private String reason;
   @ManyToOne
+  @NotNull
   private Employee employee;
 
   public UUID getId() {
