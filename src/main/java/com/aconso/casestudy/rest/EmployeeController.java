@@ -4,8 +4,6 @@ import com.aconso.casestudy.db.entity.Absence;
 import com.aconso.casestudy.db.entity.Employee;
 import com.aconso.casestudy.service.RepositoryService;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,23 +29,23 @@ private AbsenceDtoMapper mapper;
   }
 
 
-  @PostMapping("/employees/{id}")
+  @PostMapping("/employee/{id}")
   public void addAbstance(@PathVariable String id, @RequestBody AbsenceDto absence) {
     repositoryService.addAbsence(mapper.toAbsence(absence, id));
   }
 
-  @GetMapping("/employees")
+  @GetMapping("/employee")
   List<Employee> all() {
     return repositoryService.listAllUsers();
   }
 
-  @GetMapping("/employees/{id}")
+  @GetMapping("/employee/{id}")
   Employee getEmpoyee(@PathVariable String id) {
     return repositoryService.findUserById(id);
   }
 
 
-  @GetMapping("/employees/{id}/absence")
+  @GetMapping("/employee/{id}/absence")
   List<Absence> all(@PathVariable String id) {
     return repositoryService.listAbsenceForUser(id);
   }
