@@ -25,4 +25,15 @@ public class AbsenceDtoMapper {
     absence.setReason(dto.getReason());
     return absence;
   }
+
+  public AbsenceDto toDto(Absence absence) {
+    AbsenceDto absenceDto = new AbsenceDto();
+    absenceDto.setFrom(absence.getFrom());
+    absenceDto.setTo(absence.getTo());
+    absenceDto.setReason(absence.getReason());
+
+    return absenceDto;
+  }
+
+
 }

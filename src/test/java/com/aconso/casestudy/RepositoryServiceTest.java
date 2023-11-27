@@ -23,7 +23,7 @@ public class RepositoryServiceTest {
   @Test
   public void whenApplicationStarts_thenHibernateCreatesInitialRecords() {
     List<Employee> users = repositoryService.listAllUsers();
-    Assert.assertEquals(users.size(), 3);
+    Assert.assertEquals( 3, users.size());
   }
 
   @Test
@@ -34,7 +34,7 @@ public class RepositoryServiceTest {
     employee.setTenant("tenant42");
     repositoryService.addUser(employee);
     List<Employee> users = repositoryService.listAllUsers();
-    Assert.assertEquals(users.size(), 4);
+    Assert.assertEquals( 4, users.size());
   }
 
   @Test
@@ -46,21 +46,23 @@ public class RepositoryServiceTest {
   @Test
   public void listAbsence(){
     List<Absence> absences = repositoryService.listAbsence();
-    Assert.assertEquals(absences.size(), 3);
+    Assert.assertEquals( 3, absences.size());
   }
 
   @Test
   public void addAbsence(){
     Optional<Employee> employee = repositoryService.findUserByName("Karl");
-
     Absence absence = new Absence();
     absence.setEmployee(employee.get());
     absence.setFrom(new Date());
+    absence.setReason("vacation");
     absence.setTo(new Date(2023-12-12));
     repositoryService.addAbsence(absence);
     List<Absence> absences = repositoryService.listAbsence();
-    Assert.assertEquals(absences.size(), 4);
+    Assert.assertEquals( 4, absences.size());
   }
+
+
 
 
 }
