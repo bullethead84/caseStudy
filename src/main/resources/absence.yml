@@ -1,0 +1,132 @@
+openapi: 3.0.3
+info:
+  title: Absence
+  version: 1.0.9
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /employee:
+    get:
+      summary: Finds all Employee
+      operationId: getAllEmployees
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmployeeDto'
+        '400':
+          description: Invalid status value
+  /employee/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Finds one Employee
+      operationId: getEmployeeById
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeDto'
+        '400':
+          description: Invalid status value
+    post:
+      summary: add absence to employee
+      operationId: addAbstance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AbsenceDto'
+      responses:
+        '200':
+          description: Successfully created a new artist
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /employee/{id}/absence:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Finds Absence for Employee
+      operationId: getAbsence for employee
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AbsenceDto'
+        '400':
+          description: Invalid status value
+
+  /absence:
+    get:
+      summary: gets Absence
+      operationId: getAllAbsence
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AbsenceDto'
+
+components:
+  schemas:
+    EmployeeDto:
+      required:
+        - asd
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        tenant:
+          type: string
+        position:
+          type: string
+    AbsenceDto:
+      required:
+        - from
+        - to
+        - reason
+      type: object
+      properties:
+        from:
+          type: string
+        to:
+          type: string
+        reason:
+          type: string
+        employee:
+          $ref: '#/components/schemas/EmployeeDto'
+
+
