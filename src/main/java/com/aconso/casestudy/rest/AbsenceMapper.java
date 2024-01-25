@@ -13,5 +13,5 @@ public interface AbsenceMapper {
 
   Absence absenceDtoToAbsence(AbsenceDto absenceDto);
 
-  public abstract List<AbsenceDto> absenceToAbsenceDto(Collection<Absence> absenceCollection);
+  List<AbsenceDto> absenceToAbsenceDto(Collection<Absence> absenceCollection);
 }
