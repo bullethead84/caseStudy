@@ -1,0 +1,28 @@
+spring:
+    datasource:
+        driverClassName: org.postgresql.Driver
+        password: secret
+        url: jdbc:postgresql://localhost:5432/aconso
+        username: aconso
+    h2:
+        console:
+            enabled: true
+    jackson:
+        date-format: yyyy-MM-dd
+    jpa:
+        defer-datasource-initialization: true
+        generate-ddl: true
+        hibernate:
+            ddl-auto: validate
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: true
+                globally_quoted_identifiers: true
+                validator:
+                    apply_to_ddl: false
+        show-sql: false
+    sql:
+        init:
+            mode: always
+            platform: postgres
