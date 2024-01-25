@@ -12,4 +12,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
   Employee findByName(String name);
   @Query("SELECT t FROM Employee t WHERE t.id = ?1")
   Employee findUserById(UUID id);
+
 }
