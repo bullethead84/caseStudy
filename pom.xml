@@ -149,12 +149,13 @@
               <apiPackage>com.aconso.casestudy.api</apiPackage>
               <modelPackage>com.aconso.casestudy.model</modelPackage>
               <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
+              <modelNameSuffix>Dto</modelNameSuffix>
+              <withXml>true</withXml>
               <library>spring-boot</library>
               <configOptions>
                 <delegatePattern>true</delegatePattern>
                 <useSpringBoot3>true</useSpringBoot3>
                 <serializationLibrary>jackson</serializationLibrary>
-                <!--                <sourceFolder>${project.build.directory}/generated-sources/openapi</sourceFolder>-->
               </configOptions>
             </configuration>
           </execution>

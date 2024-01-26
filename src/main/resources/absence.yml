@@ -18,7 +18,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/EmployeeDto'
+                  $ref: '#/components/schemas/Employee'
         '400':
           description: Invalid status value
   /employee/{id}:
@@ -37,7 +37,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EmployeeDto'
+                $ref: '#/components/schemas/Employee'
         '400':
           description: Invalid status value
     post:
@@ -48,7 +48,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AbsenceDto'
+              $ref: '#/components/schemas/Absence'
       responses:
         '200':
           description: Successfully created a new artist
@@ -79,7 +79,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/AbsenceDto'
+                  $ref: '#/components/schemas/Absence'
         '400':
           description: Invalid status value
 
@@ -95,11 +95,11 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/AbsenceDto'
+                  $ref: '#/components/schemas/Absence'
 
 components:
   schemas:
-    EmployeeDto:
+    Employee:
       required:
         - asd
       type: object
@@ -113,7 +113,7 @@ components:
           type: string
         position:
           type: string
-    AbsenceDto:
+    Absence:
       required:
         - from
         - to
@@ -127,6 +127,6 @@ components:
         reason:
           type: string
         employee:
-          $ref: '#/components/schemas/EmployeeDto'
+          $ref: '#/components/schemas/Employee'
 
 
