@@ -149,6 +149,8 @@
               <apiPackage>com.aconso.casestudy.api</apiPackage>
               <modelPackage>com.aconso.casestudy.model</modelPackage>
               <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
+              <modelNameSuffix>Dto</modelNameSuffix>
+              <withXml>true</withXml>
               <library>spring-boot</library>
               <configOptions>
                 <delegatePattern>true</delegatePattern>
